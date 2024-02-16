@@ -21,7 +21,7 @@
 
                                 <form action="" method="GET">
                                     <div class="input-group mb-3">
-                                        <input type="text" name="Search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Data">
+                                        <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search Data">
                                         <button type="submit" class="btn btn-primary">click me bitch!</button>
                                     </div>
                                 </form>
