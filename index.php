@@ -45,7 +45,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $con = mysqli_connect("localhost","mydbadmin","","mydb1_");
+                                    $con = mysqli_connect("localhost:3306","mydbadmin","","mydb1_");
 
                                     if(isset($_GET['search']))
                                     {
