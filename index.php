@@ -44,50 +44,45 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                    $con = mysqli_connect("localhost:3306","mydbadmin","Ag9914bt??","mydb1_");
+                            <?php
+                                $con = mysqli_connect("localhost:3306", "mydbadmin", "Ag9914bt??", "mydb1_");
 
-                                    if(isset($_GET['search']))
-                                    {
-                                        $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM users WHERE CONCAT(firstname,lastname,email) LIKE '%$filtervalues%'";
+                                if (isset($_GET['search'])) {
+                                    $filtervalues = $_GET['search'];
+                                    // Check if the search query has 3 characters or less
+                                    if (strlen($filtervalues) <= 3) {
+                                        ?>
+                                        <tr>
+                                            <td colspan="4">No Record Found</td>
+                                        </tr>
+                                        <?php
+                                    } else {
+                                        $query = "SELECT * FROM users WHERE CONCAT(firstname, lastname, email) LIKE '%$filtervalues%'";
                                         $query_run = mysqli_query($con, $query);
 
-                                        if(mysqli_num_rows($query_run) > 3)
-                                        {
-                                            foreach($query_run as $items)
-                                            {
+                                        if (mysqli_num_rows($query_run) > 0) {
+                                            foreach ($query_run as $items) {
                                                 ?>
-                                                    <tr>
-                                                        <td><?= $items['id']; ?></td>
-                                                        <td><?= $items['firstname']; ?></td>
-                                                        <td><?= $items['lastname']; ?></td>
-                                                        <td><?= $items['email']; ?></td>
-                                                    </tr>
+                                                <tr>
+                                                    <td><?= $items['id']; ?></td>
+                                                    <td><?= $items['firstname']; ?></td>
+                                                    <td><?= $items['lastname']; ?></td>
+                                                    <td><?= $items['email']; ?></td>
+                                                </tr>
                                                 <?php
                                             }
-                                        }
-                                        elseif(str_word_count($query_run) <= 3)
-                                        {
+                                        } else {
                                             ?>
-                                                <tr>
-                                                    <td colspan="4">No Record Found</td>
-                                                </tr>
-                                            <?php
-                                        }
-                                        else
-                                        {
-                                            ?>
-                                                <tr>
-                                                    <td colspan="4">No Record Found</td>
-                                                </tr>
+                                            <tr>
+                                                <td colspan="4">No Record Found</td>
+                                            </tr>
                                             <?php
                                         }
                                     }
+                                }
                                 ?>
-                                <tr>
-                                    <td></td>
-                                </tr>
+
+                                
 
                             </tbody>
                         </table>
