@@ -67,6 +67,14 @@
                                                 <?php
                                             }
                                         }
+                                        elseif(str_word_count('search') <=3)
+                                        {
+                                            ?>
+                                                <tr>
+                                                    <td colspan="4">No Record Found</td>
+                                                </tr>
+                                            <?php
+                                        }
                                         else
                                         {
                                             ?>
