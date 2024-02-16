@@ -67,7 +67,7 @@
                                                 <?php
                                             }
                                         }
-                                        elseif(str_word_count('search') <=3)
+                                        elseif(str_word_count($query_run) <=3)
                                         {
                                             ?>
                                                 <tr>
